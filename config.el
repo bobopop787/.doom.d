@@ -180,3 +180,9 @@
 (map! :leader
       :desc "Switch roam directory" "n r c" #'org-roam-checkout
       :desc "New roam directory"    "n r C" #'org-roam-library-create)
+
+;; Set default line numbers to be relative
+(setq display-line-numbers-type 'relative)
+
+;; Break whole insert session into multiple undos using emacs' own grouping
+(setq evil-want-fine-undo t)
