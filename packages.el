@@ -51,3 +51,8 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
+
+(package! lean4-mode :recipe
+  (:host github
+   :repo "leanprover-community/lean4-mode"
+   :files ("*.el" "data")))

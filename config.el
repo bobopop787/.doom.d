@@ -186,3 +186,18 @@
 
 ;; Break whole insert session into multiple undos using emacs' own grouping
 (setq evil-want-fine-undo t)
+
+;; windmove keybindings
+(windmove-default-keybindings)
+
+;; Suppress lean warning
+(defun my/suppress-lsp-inlayhint-warnings (orig-fun type message &rest args)
+  "Suppress LSP inlayHint/refresh warnings from popping up."
+  (unless (and (eq type 'lsp-mode)
+               (string-match-p "workspace/inlayHint/refresh" message))
+    (apply orig-fun type message args)))
+
+(advice-add 'display-warning :around #'my/suppress-lsp-inlayhint-warnings)
+
+;; Bind soft wrap toggle to M-Z
+(keymap-global-set "M-Z" 'visual-line-mode)
